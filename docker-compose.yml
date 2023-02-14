@@ -16,7 +16,7 @@ services:
       environment:
         LINK: $LINK_DOMAIN_DEFAULT
         TOKEN: $LINK_TOKEN_DEFAULT
-        EXPOSE: nginx:80
+        EXPOSE: sonarr:8989
         FRACTAL_API: https://gateway.fractalnetworks.co
       cap_add:
         - NET_ADMIN
