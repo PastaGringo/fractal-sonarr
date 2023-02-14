@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+    sonarr:
+      image: lscr.io/linuxserver/sonarr:latest
+      container_name: sonarr
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Paris
+      volumes:
+        - fractal-app-volume-data:/config
+        - fractal-app-volume-tv:/tv #optional
+        - fractal-app-volume-downloads:/downloads #optional
+    link:
+      image: fractalnetworks/link:latest
+      environment:
+        LINK: $LINK_DOMAIN_DEFAULT
+        TOKEN: $LINK_TOKEN_DEFAULT
+        EXPOSE: nginx:80
+        FRACTAL_API: https://gateway.fractalnetworks.co
+      cap_add:
+        - NET_ADMIN
+      volumes:
+        - fractal-link-volume:/root/.local/share/caddy
+volumes:
+  fractal-app-volume-data:
+    external: true
+    name: $APP_VOLUME_NAME
+  fractal-app-volume:
+    external: true
+    name: $APP_VOLUME_NAME
+  fractal-app-volume-tv:
+    external: true
+    name: $APP_VOLUME_NAME
+  fractal-link-volume-downloads:
+    external: true
+    name: $LINK_VOLUME_NAME
