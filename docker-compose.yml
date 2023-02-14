@@ -26,12 +26,12 @@ volumes:
   fractal-app-volume-data:
     external: true
     name: $APP_VOLUME_NAME
-  fractal-app-volume:
-    external: true
-    name: $APP_VOLUME_NAME
   fractal-app-volume-tv:
     external: true
     name: $APP_VOLUME_NAME
-  fractal-link-volume-downloads:
+  fractal-app-volume-downloads:
+    external: true
+    name: $APP_VOLUME_NAME
+  fractal-link-volume:
     external: true
     name: $LINK_VOLUME_NAME
