@@ -8,9 +8,9 @@ services:
         - PGID=1000
         - TZ=Europe/Paris
       volumes:
-        - fractal-app-volume-data:/config
-        - fractal-app-volume-tv:/tv #optional
-        - fractal-app-volume-downloads:/downloads #optional
+        - fractal-app-volume:/config
+#        - fractal-app-volume-tv:/tv #optional
+#        - fractal-app-volume-downloads:/downloads #optional
     link:
       image: fractalnetworks/link:latest
       environment:
@@ -23,15 +23,15 @@ services:
       volumes:
         - fractal-link-volume:/root/.local/share/caddy
 volumes:
-  fractal-app-volume-data:
+  fractal-app-volume:
     external: true
     name: $APP_VOLUME_NAME
-  fractal-app-volume-tv:
-    external: true
-    name: $APP_VOLUME_NAME
-  fractal-app-volume-downloads:
-    external: true
-    name: $APP_VOLUME_NAME
+  #fractal-app-volume-tv:
+  #  external: true
+  #  name: $APP_VOLUME_NAME
+  #fractal-app-volume-downloads:
+  #  external: true
+  #  name: $APP_VOLUME_NAME
   fractal-link-volume:
     external: true
     name: $LINK_VOLUME_NAME
